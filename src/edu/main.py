@@ -1,15 +1,16 @@
 #!/usr/bin/env python
+import os
 import sys
 import warnings
+from dotenv import load_dotenv
 from langtrace_python_sdk import langtrace
 from edu.crew import Edu
 
+load_dotenv()
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
-langtrace.init(
-    api_key='b7a571b321eb1b0319dce7223910c15141e02c2d5f3288fce7a22fbcdba29a13'
-)
+langtrace.init(api_key=os.getenv('LANGTRACE_API_KEY'))
 
 # This main file is intended to be a way for you to run your
 # crew locally, so refrain from adding unnecessary logic into this file.
@@ -34,8 +35,11 @@ def train():
         "topic": "AI LLMs"
     }
     try:
-        Edu().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
-
+        Edu().crew().train(
+            n_iterations=int(sys.argv[1]),
+            filename=sys.argv[2],
+            inputs=inputs
+        )
     except Exception as e:
         raise Exception(f"An error occurred while training the crew: {e}")
 
@@ -57,7 +61,13 @@ def test():
         "topic": "AI LLMs"
     }
     try:
-        Edu().crew().test(n_iterations=int(sys.argv[1]), openai_model_name=sys.argv[2], inputs=inputs)
-
+        Edu().crew().test(
+            n_iterations=int(sys.argv[1]),
+            openai_model_name=sys.argv[2],
+            inputs=inputs
+        )
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
+
+if __name__ == "__main__":
+    run()  # or whichever function you want to run

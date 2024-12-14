@@ -1,2 +1,3 @@
 crewai
 langtrace-python-sdk
+python-dotenv

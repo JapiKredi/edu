@@ -1,0 +1,13 @@
+prefix=/Users/jasper/edu/venv
+exec_prefix=/Users/jasper/edu/venv
+libdir=/Users/jasper/edu/venv/lib
+sharedlibdir=/Users/jasper/edu/venv/lib
+includedir=/Users/jasper/edu/venv/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

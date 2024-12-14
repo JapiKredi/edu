@@ -4,9 +4,12 @@ import warnings
 from langtrace_python_sdk import langtrace
 from edu.crew import Edu
 
+
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
-langtrace.init(api_key = 'b7a571b321eb1b0319dce7223910c15141e02c2d5f3288fce7a22fbcdba29a13')
+langtrace.init(
+    api_key='b7a571b321eb1b0319dce7223910c15141e02c2d5f3288fce7a22fbcdba29a13'
+)
 
 # This main file is intended to be a way for you to run your
 # crew locally, so refrain from adding unnecessary logic into this file.

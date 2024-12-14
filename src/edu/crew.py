@@ -1,9 +1,14 @@
-from crewai import Agent, Crew, Process, Task
+from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
-
+import os
 # If you want to run a snippet of code before or after the crew starts, 
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
+
+perplexity_llm = LLM(model="gpt-4o-mini", 
+          base_url="https://api.perplexity.ai/api/v1/chat/completions", 
+          api_key=os.getenv('PERPLEXITY_API_KEY'))
+
 
 @CrewBase
 class Edu():
@@ -21,7 +26,8 @@ class Edu():
 	def researcher(self) -> Agent:
 		return Agent(
 			config=self.agents_config['researcher'],
-			verbose=True
+			verbose=True,
+			llm=perplexity_llm
 		)
 
 	@agent

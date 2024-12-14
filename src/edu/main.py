@@ -12,6 +12,8 @@ warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 langtrace.init(api_key=os.getenv('LANGTRACE_API_KEY'))
 
+perplexity_api_key = os.getenv('PERPLEXITY_API_KEY')
+
 # This main file is intended to be a way for you to run your
 # crew locally, so refrain from adding unnecessary logic into this file.
 # Replace with inputs you want to test with, it will automatically
